@@ -11,6 +11,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
+void mgos_dns_sd_advertise(void);
 void mgos_dns_sd_send_goodbye_packet(void);
 
 #ifdef __cplusplus

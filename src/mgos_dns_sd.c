@@ -469,6 +469,18 @@ bool mgos_dns_sd_init(void) {
                 mgos_sys_config_get_dns_sd_ttl()));
   return true;
 }
+
+void mgos_dns_sd_advertise() {
+  // TODO: Check if there is a connection
+  if( true ) {
+    struct mg_connection *c = mgos_mdns_get_listener();
+    LOG(LL_DEBUG, ("mdns_listener %p", c));
+    if (c != NULL) {
+      dns_sd_advertise(c);
+    }
+  }
+}
+
 void mgos_dns_sd_send_goodbye_packet() {
   struct mg_connection *c = mgos_mdns_get_listener();
   LOG(LL_DEBUG, ("mdns_listener %p", c));
