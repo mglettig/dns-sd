@@ -76,6 +76,7 @@ static void add_srv_record(const char *host_name, const char *service_name,
   mg_dns_encode_name(rdata, host_name, strlen(host_name));
   mg_dns_reply_record(reply, &rr, service_name, MG_DNS_SRV_RECORD,
                       mgos_sys_config_get_dns_sd_ttl(), rdata->buf, rdata->len);
+  LOG(LL_DEBUG, ("--- Add SRV record: host_name=%s, service_name=%s", host_name, service_name));
 }
 
 // This record contains negative answer for the IPv6 AAAA question
@@ -111,6 +112,7 @@ static void add_a_record(const char *name, struct mg_dns_reply *reply) {
                          sizeof(addr));
     reply->msg->num_answers++;
   }
+  LOG(LL_DEBUG, ("--- Add A record: name=%s", name));
 }
 
 static void append_label(struct mbuf *m, struct mg_str key, struct mg_str val) {
@@ -159,6 +161,7 @@ static void add_txt_record(const char *name, struct mg_dns_reply *reply,
   mg_dns_encode_record(reply->io, &rr, name, strlen(name), rdata->buf,
                        rdata->len);
   reply->msg->num_answers++;
+  LOG(LL_DEBUG, ("--- Add TXT record: name=%s", name));
 }
 
 static void add_ptr_record(const char *name, const char *domain,
@@ -170,6 +173,7 @@ static void add_ptr_record(const char *name, const char *domain,
   mg_dns_encode_record(reply->io, &rr, name, strlen(name), rdata->buf,
                        rdata->len);
   reply->msg->num_answers++;
+  LOG(LL_DEBUG, ("--- Add PTR record: name=%s, domain=%s", name, domain));
 }
 
 static void advertise_type(struct mg_dns_reply *reply, struct mbuf *rdata) {
