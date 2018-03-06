@@ -168,7 +168,7 @@ static void advertise_type(struct mg_dns_reply *reply, struct mbuf *rdata) {
   char host_name[128], service_name[128];
   make_service_name(service_name, sizeof(service_name));
   make_host_name(host_name, sizeof(host_name));
-  add_ptr_record(SD_TYPE_ENUM_NAME, MGOS_DNS_SD_HTTP_TYPE, reply, rdata);
+  add_ptr_record(SD_TYPE_ENUM_NAME, MGOS_DNS_SD_HTTP_TYPE_FULL, reply, rdata);
   add_ptr_record(MGOS_DNS_SD_HTTP_TYPE_FULL, service_name, reply, rdata);
   add_srv_record(host_name, service_name, reply, rdata);
   add_txt_record(service_name, reply, rdata);
