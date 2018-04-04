@@ -348,7 +348,7 @@ static void dns_sd_send_goodbye_packet(struct mg_connection *c) {
   memset(&msg, 0, sizeof(msg));
   msg.flags = 0x8400;
   reply = mg_dns_create_reply(&mbuf1, &msg);
-  goodbye_packet(&reply, &mbuf2);
+  goodbye_packet(&reply, false /* naive_client */, &mbuf2);
   if (msg.num_answers > 0) {
     LOG(LL_INFO, ("sending goodbye packet, size %d", (int) reply.io->len));
     mg_dns_send_reply(c, &reply);
