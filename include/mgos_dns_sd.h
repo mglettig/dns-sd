@@ -26,6 +26,7 @@ extern "C" {
  * Return currently configure DNS-SD hostname.
  */
 const char *mgos_dns_sd_get_host_name(void);
+void mgos_dns_sd_send_goodbye_packet(void);
 
 #ifdef __cplusplus
 }
