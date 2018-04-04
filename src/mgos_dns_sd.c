@@ -383,6 +383,14 @@ static void dns_sd_net_ev_handler(int ev, void *evd, void *arg) {
   (void) evd;
 }
 
+void mgos_dns_sd_advertise(void) {
+  struct mg_connection *c = mgos_mdns_get_listener();
+  LOG(LL_DEBUG, ("mdns_listener %p", c));
+  if (c != NULL) {
+    dns_sd_advertise(c);
+  }
+}
+
 const char *mgos_dns_sd_get_host_name(void) {
   return s_host_name;
 }

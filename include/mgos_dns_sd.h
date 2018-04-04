@@ -27,6 +27,7 @@ extern "C" {
  */
 const char *mgos_dns_sd_get_host_name(void);
 void mgos_dns_sd_send_goodbye_packet(void);
+void mgos_dns_sd_advertise(void);
 
 #ifdef __cplusplus
 }
